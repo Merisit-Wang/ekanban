@@ -2,20 +2,6 @@
 
 {% block title %}EKB{% endblock %}
 
-{% block head %}
-    {{ super() }}
-    <link href="{{ url_for('static', filename = 'bootstrap.min.css') }}" rel="stylesheet">
-    <link href="{{ url_for('static', filename = 'bootstrap-datepicker.standalone.min.css') }}" rel="stylesheet">
-{% endblock %}
-
-{% block scripts %}
-    {{ super() }}
-    <script src="{{ url_for('static', filename = 'jquery.min.js') }}"></script>
-    <script src="{{ url_for('static', filename = 'bootstrap.min.js') }}"></script>
-    <script src="{{ url_for('static', filename = 'bootstrap-datepicker.min.js') }}"></script>
-    <script src="{{ url_for('static', filename = 'bootstrap-datepicker.zh-CN.min.js') }}"></script>
-{% endblock %}
-
 {% block navbar %}
 <div class="navbar navbar-inverse" role="navigation">
     <div class="container">
@@ -41,4 +27,18 @@
 <div class="container">
     {% block page_content %}{% endblock %}
 </div>
+{% endblock %}
+
+{% block head %}
+    {{ super() }}
+    <link href="{{ url_for('static', filename = 'bootstrap.min.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename = 'bootstrap-datepicker.standalone.min.css') }}" rel="stylesheet">
+{% endblock %}
+
+{% block scripts %}
+    {{ super() }}
+    <script src="{{ url_for('static', filename = 'jquery.min.js') }}"></script>
+    <script src="{{ url_for('static', filename = 'bootstrap.min.js') }}"></script>
+    <script src="{{ url_for('static', filename = 'bootstrap-datepicker.min.js') }}"></script>
+    <script src="{{ url_for('static', filename = 'bootstrap-datepicker.zh-CN.min.js') }}"></script>
 {% endblock %}
