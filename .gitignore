@@ -2,3 +2,4 @@
 venv/
 *.pyc
 .python-version
+*.sqlite
