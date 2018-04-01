@@ -15,9 +15,10 @@
     <br>
     <hr>
     <br>
-    <div class="row">
-        <div class="card-deck">
-            {% for card in cards %}
+    {% for card_row in card_map %}
+        <div class="row">
+            <div class="card-deck">
+            {% for card in card_row %}
                 <div class="card" style="background-color: #bcf9d8">
                     <div class="card-body">
                         <h5 class="card-title">{{ card._type }}</h5>
@@ -34,6 +35,8 @@
                     </div>
                 </div>
             {% endfor %}
+            </div>
         </div>
-    </div>
+        <br>
+    {% endfor %}
 {% endblock %}

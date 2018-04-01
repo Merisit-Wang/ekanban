@@ -4,10 +4,25 @@ from .forms import CardForm
 from ..models import Card
 from .. import db
 
+def card_map(cards):
+    card_col = []
+    card_row = []
+    row = 1
+    for card in cards:
+        if row % 5 is not 0:
+            card_col.append(card)
+            row += 1
+        if row % 5 is 0:
+            card_row.append(card_col)
+            card_col=[]
+            row += 1
+    card_row.append(card_col)
+    return card_row
+
 @main.route('/')
 def home():
     cards = Card.query.all()
-    return render_template('home.html', cards=cards)
+    return render_template('home.html', card_map=card_map(cards))
 
 @main.route('/card_form', methods=['GET', 'POST'])
 def new_card():
