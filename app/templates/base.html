@@ -1,65 +1,57 @@
 <!DOCTYPE html>
 <html lang="cn">
-  <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>E-Kanban</title>
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>E-Kanban</title>
 
-    <!-- Bootstrap -->
-    <link href="{{ url_for('static', filename='css/bootstrap-4.0.0.css') }}" rel="stylesheet">
-    <link href="{{ url_for('static', filename='css/bootstrap-datepicker.standalone.min.css') }}" rel="stylesheet">
+        <!-- Bootstrap -->
+        <link href="{{ url_for('static', filename='css/bootstrap-4.0.0.css') }}" rel="stylesheet">
+        <link href="{{ url_for('static', filename='css/bootstrap-datepicker.standalone.min.css') }}" rel="stylesheet">
 
-  </head>
-  <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-       <a class="navbar-brand" href="{{ url_for('main.home') }}">E-Kanban</a>
-       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-       <span class="navbar-toggler-icon"></span>
-       </button>
-       <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav mr-auto">
-             <li class="nav-item active">
-                <a class="nav-link" href="{{ url_for('main.new_card') }}">NewCard <span class="sr-only">(current)</span></a>
-             </li>
-          </ul>
-       </div>
-    </nav>
+    </head>
 
-    <div class="jumbotron jumbotron-fluid text-center">
-       <h1 class="display-4">团队任务管理</h1>
-       <br>
-       <p class="lead">当前迭代：</p>
-    </div>
-    <div class="container">
-       <br>
-       <hr>
-       <br>
-        <div class="row">
-            <div class="card-deck">
-                {% block page_content %}{% endblock %}
+    <body>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <a class="navbar-brand" href="{{ url_for('main.home') }}">E-Kanban</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="{{ url_for('main.new_card') }}">NewCard <span class="sr-only">(current)</span></a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
+        {% block page_header %}{% endblock %}
+
+        <div class="container">
+
+            {% block page_content %}{% endblock %}
+            <br>
+            <hr>
+            <br>
+            <div class="row">
+                <div class="text-center col-lg-6 offset-lg-3">
+                    <h4>Footer </h4>
+                    <p>Copyright &copy; 2015 &middot; All Rights Reserved &middot; <a href="#" >My Website</a></p>
+                </div>
             </div>
         </div>
-       <br>
-       <hr>
-       <br>
-           <div class="row">
-          <div class="text-center col-lg-6 offset-lg-3">
-             <h4>Footer </h4>
-             <p>Copyright &copy; 2015 &middot; All Rights Reserved &middot; <a href="#" >My Website</a></p>
-          </div>
-       </div>
-    </div>
 
-    {% block scripts %}
-    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) --> 
-    <script src="{{ url_for('static', filename='js/jquery-3.2.1.min.js') }}"></script>
+        {% block scripts %}
+            <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+            <script src="{{ url_for('static', filename='js/jquery-3.2.1.min.js') }}"></script>
 
-    <!-- Include all compiled plugins (below), or include individual files as needed --> 
-    <script src="{{ url_for('static', filename='js/popper.min.js') }}"></script>
-    <script src="{{ url_for('static', filename='js/bootstrap-4.0.0.js') }}"></script>
-  <script src="{{ url_for('static', filename='js/bootstrap-datepicker.min.js') }}"></script>
-  <script src="{{ url_for('static', filename='js/bootstrap-datepicker.zh-CN.min.js') }}"></script>
-  {% endblock %}
-  </body>
+            <!-- Include all compiled plugins (below), or include individual files as needed -->
+            <script src="{{ url_for('static', filename='js/popper.min.js') }}"></script>
+            <script src="{{ url_for('static', filename='js/bootstrap-4.0.0.js') }}"></script>
+            <script src="{{ url_for('static', filename='js/bootstrap-datepicker.min.js') }}"></script>
+            <script src="{{ url_for('static', filename='js/bootstrap-datepicker.zh-CN.min.js') }}"></script>
+        {% endblock %}
+    </body>
 </html>
