@@ -1,5 +1,7 @@
 {% extends "base.html" %}
 
+{% block title %}{{ super() }} | Home{% endblock %}
+
 {% block page_header %}
         <div class="jumbotron jumbotron-fluid text-center">
             <h1 class="display-4">团队任务管理</h1>
@@ -16,16 +18,19 @@
     <div class="row">
         <div class="card-deck">
             {% for card in cards %}
-                <div class="card">
+                <div class="card" style="background-color: #bcf9d8">
                     <div class="card-body">
-                        <h5 class="card-title">{{ card.type }}</h5>
-                        <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+                        <h5 class="card-title">{{ card._type }}</h5>
+                        <h6 class="card-subtitle mb-2 text-muted">{{ card._priority }} [计划：{{ card.expect_day }}] [实际：{{ card.actual_day }}]</h6>
+                        <hr>
                         <p class="card-text">{{ card.description }}</p>
-                        <a href="#" class="card-link">{{ card.start_time }}</a>
-                        <a href="#" class="card-link">{{ card.end_time }}</a>
                     </div>
                     <div class="card-footer">
-                        <small class="text-muted">Last updated 3 mins ago</small>
+                        <small class="text-muted">
+                            <p class="card-text">开始时间：{{ card._start_time }}</p>
+                            <p class="card-text">结束时间：{{ card._end_time }}</p>
+                            <p class="card-text">完成人：{{ card.author }}</p>
+                        </small>
                     </div>
                 </div>
             {% endfor %}

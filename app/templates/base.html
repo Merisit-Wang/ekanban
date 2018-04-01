@@ -4,7 +4,11 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>E-Kanban</title>
+        <title>
+            {% block title %}
+                E-Kanban
+            {% endblock %}
+        </title>
 
         <!-- Bootstrap -->
         <link href="{{ url_for('static', filename='css/bootstrap-4.0.0.css') }}" rel="stylesheet">
@@ -37,7 +41,6 @@
             <br>
             <div class="row">
                 <div class="text-center col-lg-6 offset-lg-3">
-                    <h4>Footer </h4>
                     <p>Copyright &copy; 2015 &middot; All Rights Reserved &middot; <a href="#" >My Website</a></p>
                 </div>
             </div>
