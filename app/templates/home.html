@@ -1,19 +1,18 @@
 {% extends "base.html" %}
 
 {% block page_content %}
-<div class="card-group">
     {% for card in cards %}
-    <div class="card" style="width: 20rem;">
-      <div class="card-block">
-        <h3 class="card-title">{{ card.type }}</h3>
-        <p class="card-text">{{ card.description }}</p>
-      </div>
-      <ul class="list-group list-group-flush">
-        <li class="list-group-item">{{ card.priority }}</li>
-        <li class="list-group-item">Dapibus ac facilisis in</li>
-        <li class="list-group-item">Vestibulum at eros</li>
-      </ul>
+             <div class="card">
+                <div class="card-body">
+                   <h5 class="card-title">{{ card.type }}</h5>
+                   <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+                   <p class="card-text">{{ card.description }}</p>
+                   <a href="#" class="card-link">{{ card.start_time }}</a>
+                   <a href="#" class="card-link">{{ card.end_time }}</a>
+                </div>
+                 <div class="card-footer">
+      <small class="text-muted">Last updated 3 mins ago</small>
     </div>
+                  </div>
     {% endfor %}
-</div>
 {% endblock %}
