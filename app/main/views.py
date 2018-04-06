@@ -40,3 +40,7 @@ def new_card():
         db.session.add(card)
         return redirect(request.args.get('next') or url_for('main.home'))
     return render_template('new_card.html', form=form)
+
+@main.route('/stat')
+def stat():
+    return render_template('stat.html')
