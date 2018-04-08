@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+
+{% block title %}{{ super() }} | Charts{% endblock %}
+
+{% block page_content %}
+    <br>
+    <hr>
+    <br>
+    <div class="container">
+        <div  id="task_distribution" style="width:600px;height:400px;margin-right:auto;margin-left:auto"></div>
+        <br>
+        <div  id="plan_accuracy" style="width:600px;height:400px;margin-right:auto;margin-left:auto"></div>
+        <br>
+        <div  id="plan_completion" style="width:600px;height:400px;margin-right:auto;margin-left:auto"></div>
+        <br>
+        <div  id="manpower_distribution" style="width:600px;height:400px;margin-right:auto;margin-left:auto"></div>
+    </div>
+{% endblock %}
+
+{% block scripts %}
+    {{ super() }}
+    <script src="{{ url_for('static', filename='js/echarts.common.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/charts/chart_option.js') }}"></script>
+    <script>
+        var taskDistributionData = {{ task_dis_data|safe }};
+        var taskDistribution = echarts.init(document.getElementById('task_distribution'), 'light');
+        taskDistribution.setOption(chartOption(taskDistributionData, '任务分布'));
+    </script>
+
+    <script>
+        var planAccuracyData = {{ plan_acc_data|safe }};
+        var planAccuracy = echarts.init(document.getElementById('plan_accuracy'), 'light');
+        planAccuracy.setOption(chartOption(planAccuracyData, '计划准确率'));
+    </script>
+
+    <script>
+        var planCompletionData = {{ plan_comp_date|safe }};
+        var planCompletion = echarts.init(document.getElementById('plan_completion'), 'light');
+        planCompletion.setOption(chartOption(planCompletionData, '计划完成率'));
+    </script>
+
+    <script>
+        var manpowerDistributionData = {{ manpower_data|safe }};
+        var manpowerDistribution = echarts.init(document.getElementById('manpower_distribution'), 'light');
+        manpowerDistribution.setOption(chartOption(manpowerDistributionData, '人力分布'));
+    </script>
+{% endblock %}

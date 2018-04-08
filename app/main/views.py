@@ -1,6 +1,6 @@
 from flask import render_template, redirect, request, url_for
 from . import main
-from .forms import CardForm
+from .forms import CardForm, StatForm
 from ..models import Card
 from .. import db
 import json
@@ -48,10 +48,13 @@ def new_card():
         return redirect(request.args.get('next') or url_for('main.home'))
     return render_template('new_card.html', form=form)
 
-@main.route('/stat')
+@main.route('/stat', methods=['GET', 'POST'])
 def stat():
-    return render_template('stat.html',
+    form = StatForm()
+    if form.validate_on_submit():
+        return render_template('charts.html',
                            task_dis_data=json.dumps(dataxx),
                            plan_acc_data=json.dumps(dataxx),
                            plan_comp_date=json.dumps(dataxx),
                            manpower_data=json.dumps(dataxx))
+    return render_template('stat.html', form=form)

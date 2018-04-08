@@ -1,6 +1,6 @@
 from flask_wtf import FlaskForm
-from wtforms import TextAreaField, SubmitField, SelectField, DateField
-from wtforms.validators import DataRequired
+from wtforms import TextAreaField, SubmitField, SelectField, DateField, StringField
+from wtforms.validators import DataRequired, Length
 from flask_admin.form import DatePickerWidget
 from config import type_list, priority_list, expect_days_list, actual_days_list, author_list
 
@@ -21,3 +21,15 @@ class CardForm(FlaskForm):
     author = SelectField("完成人", choices=author_list)
     remark = TextAreaField('备注')
     submit = SubmitField('建卡')
+
+class StatForm(FlaskForm):
+    from_date = DateField('迭代开始时间',
+                          validators=[DataRequired()],
+                          format='%Y-%m-%d',
+                          widget=DatePickerWidget())
+    to_date = DateField('迭代结束时间',
+                          validators=[DataRequired()],
+                          format='%Y-%m-%d',
+                          widget=DatePickerWidget())
+    manpower = StringField('总人力', validators=[DataRequired(), Length(3, 3)])
+    submit = SubmitField('统计')
