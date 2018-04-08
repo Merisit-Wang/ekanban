@@ -1,9 +1,8 @@
 
-function getTaskDistributionConfig(vars) {
+function chartOption(chartData, chartName) {
     var option = {
-        theme:'light',
     title : {
-        text: '南丁格尔玫瑰图',
+        text:chartName,
         x:'center'
     },
     tooltip : {
@@ -35,11 +34,10 @@ function getTaskDistributionConfig(vars) {
                     show: true
                 }
             },
-            data:vars
+            data:chartData
         }
     ]
 };
-
 
     return option;
 }

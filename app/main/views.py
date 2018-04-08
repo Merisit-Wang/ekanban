@@ -50,4 +50,8 @@ def new_card():
 
 @main.route('/stat')
 def stat():
-    return render_template('stat.html', data=json.dumps(dataxx))
+    return render_template('stat.html',
+                           task_dis_data=json.dumps(dataxx),
+                           plan_acc_data=json.dumps(dataxx),
+                           plan_comp_date=json.dumps(dataxx),
+                           manpower_data=json.dumps(dataxx))
