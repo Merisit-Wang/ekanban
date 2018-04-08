@@ -3,6 +3,13 @@ from . import main
 from .forms import CardForm
 from ..models import Card
 from .. import db
+import json
+
+dataxx = [{"value": 335, "name": '代码开发'},
+{"value": 310, "name": '邮件营销'},
+{"value": 274, "name": '联盟广告'},
+{"value": 235, "name": '视频广告'},
+{"value": 400, "name": '搜索引擎'}]
 
 def card_map(cards):
     card_col = []
@@ -43,4 +50,4 @@ def new_card():
 
 @main.route('/stat')
 def stat():
-    return render_template('stat.html')
+    return render_template('stat.html', data=json.dumps(dataxx))

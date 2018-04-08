@@ -6,14 +6,20 @@
     <br>
     <hr>
     <br>
-    <div class="con"></div>
-    <div id="task_distribution" style="width: 600px;height:400px;"></div>
-
+    <div class="container">
+        <div  id="task_distribution" style="width:600px;height:400px;margin-right:auto;margin-left:auto"></div>
+    </div>
 {% endblock %}
 
 {% block scripts %}
     {{ super() }}
     <script src="{{ url_for('static', filename='js/echarts.common.min.js') }}"></script>
     <script src="{{ url_for('static', filename='js/charts/task_distribution.js') }}"></script>
+    <script>
+        var taskDistributionData = {{ data|safe }};
+        var taskDistribution = echarts.init(document.getElementById('task_distribution'), 'light');
+        taskDistribution.setOption(getTaskDistributionConfig(taskDistributionData));
+    </script>
+
 
 {% endblock %}
