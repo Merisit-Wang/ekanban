@@ -21,27 +21,28 @@
     {{ super() }}
     <script src="{{ url_for('static', filename='js/echarts.common.min.js') }}"></script>
     <script src="{{ url_for('static', filename='js/charts/chart_option.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/charts/theme/macarons.js') }}"></script>
     <script>
         var taskDistributionData = {{ task_dis_data|safe }};
-        var taskDistribution = echarts.init(document.getElementById('task_distribution'), 'light');
+        var taskDistribution = echarts.init(document.getElementById('task_distribution'), 'macarons');
         taskDistribution.setOption(chartOption(taskDistributionData, '任务分布'));
     </script>
 
     <script>
         var planAccuracyData = {{ plan_acc_data|safe }};
-        var planAccuracy = echarts.init(document.getElementById('plan_accuracy'), 'light');
-        planAccuracy.setOption(chartOption(planAccuracyData, '计划准确率'));
+        var planAccuracy = echarts.init(document.getElementById('plan_accuracy'), 'macarons');
+        planAccuracy.setOption(chartOption(planAccuracyData, '计划准确率-所有计划'));
     </script>
 
     <script>
         var planCompletionData = {{ plan_comp_date|safe }};
-        var planCompletion = echarts.init(document.getElementById('plan_completion'), 'light');
-        planCompletion.setOption(chartOption(planCompletionData, '计划完成率'));
+        var planCompletion = echarts.init(document.getElementById('plan_completion'), 'macarons');
+        planCompletion.setOption(chartOption(planCompletionData, '计划完成率-必须完成'));
     </script>
 
     <script>
         var manpowerDistributionData = {{ manpower_data|safe }};
-        var manpowerDistribution = echarts.init(document.getElementById('manpower_distribution'), 'light');
+        var manpowerDistribution = echarts.init(document.getElementById('manpower_distribution'), 'macarons');
         manpowerDistribution.setOption(chartOption(manpowerDistributionData, '人力分布'));
     </script>
 {% endblock %}

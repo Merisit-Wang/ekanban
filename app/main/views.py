@@ -56,7 +56,7 @@ def stat():
         chartData = ChartData(form.from_date.data, form.to_date.data, form.manpower.data)
         return render_template('charts.html',
                            task_dis_data=json.dumps(chartData.getTaskDistribution()),
-                           plan_acc_data=json.dumps(dataxx),
-                           plan_comp_date=json.dumps(dataxx),
-                           manpower_data=json.dumps(dataxx))
+                           plan_acc_data=json.dumps(chartData.getPlanAccuracyData()),
+                           plan_comp_date=json.dumps(chartData.getPlanCompletionData()),
+                           manpower_data=json.dumps(chartData.getManpowerDistributionData()))
     return render_template('stat.html', form=form)
