@@ -10,8 +10,8 @@ class Card(db.Model):
     type = db.Column(db.Integer)
     priority = db.Column(db.Integer)
     expect_day = db.Column(db.Integer)
-    start_time = db.Column(db.DateTime, default=datetime.utcnow())
-    end_time = db.Column(db.DateTime, default=datetime.utcnow())
+    start_time = db.Column(db.Date, default=datetime.utcnow())
+    end_time = db.Column(db.Date, default=datetime.utcnow())
     actual_day = db.Column(db.Integer)
     author = db.Column(db.Integer)
     remark = db.Column(db.Text)
@@ -29,14 +29,6 @@ class Card(db.Model):
             if priority[0] == str(self.priority):
                 return priority[1]
         return 'Priorty Error'
-
-    @property
-    def _start_time(self):
-        return self.start_time.strftime('%Y-%m-%d')
-
-    @property
-    def _end_time(self):
-        return self.end_time.strftime('%Y-%m-%d')
 
     def __repr__(self):
         return '<description %r>' %  self.description

@@ -4,6 +4,7 @@ from .forms import CardForm, StatForm
 from ..models import Card
 from .. import db
 import json
+from .charts import ChartData
 
 dataxx = [{"value": 335, "name": '代码开发'},
 {"value": 310, "name": '邮件营销'},
@@ -52,8 +53,9 @@ def new_card():
 def stat():
     form = StatForm()
     if form.validate_on_submit():
+        chartData = ChartData(form.from_date.data, form.to_date.data, form.manpower.data)
         return render_template('charts.html',
-                           task_dis_data=json.dumps(dataxx),
+                           task_dis_data=json.dumps(chartData.getTaskDistribution()),
                            plan_acc_data=json.dumps(dataxx),
                            plan_comp_date=json.dumps(dataxx),
                            manpower_data=json.dumps(dataxx))
