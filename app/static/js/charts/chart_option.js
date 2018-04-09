@@ -14,7 +14,7 @@ function chartOption(chartData, chartName) {
         {
             name:'半径模式',
             type:'pie',
-            radius : [10, 150],
+            radius : [10, 130],
             center : ['50%', '50%'],
             roseType : 'radius',
             label: {

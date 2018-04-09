@@ -13,10 +13,11 @@ class ChartData():
         return data
 
     def clearNoneValue(self, data):
-        for index, elem in enumerate(data):
-            if elem["value"] is 0:
-                data.pop(index)
-        return data
+        data_after_clear = []
+        for elem in data:
+            if elem["value"] is not 0:
+                data_after_clear.append(elem)
+        return data_after_clear
 
     def getTaskDistribution(self):
         data = self.dataInit(type_list)
