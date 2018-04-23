@@ -13,7 +13,7 @@ class Card(db.Model):
     start_time = db.Column(db.Date, default=datetime.utcnow())
     end_time = db.Column(db.Date, default=datetime.utcnow())
     actual_day = db.Column(db.Integer)
-    author = db.Column(db.Integer)
+    author = db.Column(db.String(64))
     remark = db.Column(db.Text)
 
     @property
